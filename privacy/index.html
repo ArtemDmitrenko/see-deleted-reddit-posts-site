@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — See Deleted Reddit Posts</title>
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .legal { max-width: 720px; margin: 0 auto; padding: 56px 24px; }
+    .legal h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: var(--fg-strong); }
+    .legal .last-updated { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+    .legal h2 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; color: var(--fg-strong); }
+    .legal p, .legal li { font-size: 15px; color: var(--fg); line-height: 1.7; margin-bottom: 12px; }
+    .legal ul { padding-left: 24px; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="nav-logo">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="white" stroke-width="2.2" fill="none"/>
+            <polygon points="9,5.5 12,11.5 6,11.5" fill="#FF4500"/>
+            <line x1="14.5" y1="14.5" x2="19.5" y2="19.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        See Deleted Reddit Posts
+      </a>
+      <div class="nav-links" style="margin-left:auto;">
+        <a href="/">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <h1>Privacy Policy</h1>
+    <div class="last-updated">Last updated: May 5, 2026</div>
+
+    <h2>Overview</h2>
+    <p>See Deleted Reddit Posts ("the Extension") is a Chrome browser extension that restores deleted or removed Reddit content using a public third-party archive. We are committed to protecting your privacy. This policy explains what data the Extension processes and what it does not.</p>
+
+    <h2>Data we do NOT collect</h2>
+    <ul>
+      <li>We do not collect personally identifiable information (name, email, address, phone, etc.).</li>
+      <li>We do not track your browsing history.</li>
+      <li>We do not use cookies or analytics services.</li>
+      <li>We do not sell or share data with third parties for marketing.</li>
+    </ul>
+
+    <h2>Data the Extension processes</h2>
+    <p>To restore deleted content, the Extension sends limited public information to the Arctic Shift archive API:</p>
+    <ul>
+      <li><strong>Post IDs and subreddit names</strong> from the Reddit page you are currently viewing.</li>
+      <li><strong>Usernames</strong> when you visit a Reddit user profile page that is hidden or deleted.</li>
+    </ul>
+    <p>This data is sent over HTTPS only when you visit a Reddit page where the Extension is active. No data is sent for any other browsing activity.</p>
+
+    <h2>Local storage</h2>
+    <p>The Extension stores the following data locally in your browser using <code>chrome.storage</code>:</p>
+    <ul>
+      <li>Your preferences (theme, blocklist, feature toggles).</li>
+      <li>Cached archive responses to reduce repeated API calls.</li>
+      <li>Install date (used solely to differentiate new vs. existing users for future feature gating).</li>
+    </ul>
+    <p>This data never leaves your browser unless you have Chrome Sync enabled, in which case it is synced across your own Chrome installations by Google.</p>
+
+    <h2>Third-party services</h2>
+    <p>The Extension connects to:</p>
+    <ul>
+      <li><strong>Arctic Shift</strong> (<a href="https://arctic-shift.photon-reddit.com/">arctic-shift.photon-reddit.com</a>) — public Reddit archive API used to fetch deleted content.</li>
+      <li><strong>Reddit API</strong> — to look up post metadata.</li>
+    </ul>
+    <p>These services have their own privacy policies and are not under our control.</p>
+
+    <h2>Children's privacy</h2>
+    <p>The Extension is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. Continued use of the Extension after changes are posted constitutes acceptance of the updated policy.</p>
+
+    <h2>Contact</h2>
+    <p>If you have any questions about this policy, contact us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@example.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 See Deleted Reddit Posts. Not affiliated with Reddit, Inc.</div>
+  </footer>
+</body>
+</html>

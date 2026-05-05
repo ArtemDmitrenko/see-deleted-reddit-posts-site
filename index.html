@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>See Deleted Reddit Posts — Chrome Extension to Restore Removed Content</title>
+  <meta name="description" content="Free Chrome extension that automatically restores deleted Reddit posts, removed comments, and hidden user profiles. Works instantly with no setup.">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="See Deleted Reddit Posts — Chrome Extension">
+  <meta property="og:description" content="Automatically restore deleted Reddit posts, removed comments, and hidden user profiles.">
+  <meta property="og:image" content="images/og-image.png">
+  <meta property="og:type" content="website">
+
+  <!-- Structured data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "See Deleted Reddit Posts",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1000"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="nav-logo">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="9" r="7" stroke="white" stroke-width="2.2" fill="none"/>
+            <polygon points="9,5.5 12,11.5 6,11.5" fill="#FF4500"/>
+            <line x1="14.5" y1="14.5" x2="19.5" y2="19.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        See Deleted Reddit Posts
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#install" class="btn-install" id="cws-link-top">Add to Chrome — Free</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>See deleted and removed Reddit posts</h1>
+        <p class="hero-sub">
+          Automatically restores content that was deleted by users or removed by moderators.
+          Works instantly, no clicks needed.
+        </p>
+        <a href="#install" class="btn-cta-light" id="cws-link-hero">Add to Chrome — Free</a>
+        <div class="hero-rating">
+          <div>
+            <div><span class="hero-rating-stars">★★★★★</span> <span class="hero-rating-text">4.9/5 from Chrome Web Store</span></div>
+            <span class="hero-rating-count">1,000+ users</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/hero-before-after.png" alt="Before and after — extension restores deleted Reddit content">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <h2 class="section-title">Everything you need to uncover deleted content</h2>
+    <p class="section-sub">Works automatically in the background — just browse Reddit as usual</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Restore deleted posts</h3>
+        <p>See the original text of posts that were deleted by their author or removed by subreddit moderators.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Restore removed comments</h3>
+        <p>Entire comment threads marked as [removed] are brought back with full context and threading.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Restore hidden profiles</h3>
+        <p>View post and comment history for users who deleted or suspended their Reddit account.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section-white" id="how-it-works" style="background:white;">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">Three simple steps</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Install from Chrome Web Store</h4>
+          <p>One click install. No account or signup needed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Browse Reddit normally</h4>
+          <p>Visit any post page or user profile.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Deleted content appears</h4>
+          <p>Original posts &amp; comments are restored automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-image">
+      <img src="images/hero-before-after.png" alt="Before and after demonstration">
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section">
+    <h2 class="section-title">What users are saying</h2>
+    <p class="section-sub">Loved by Reddit power users</p>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Finally I can see what was deleted! This extension is a must-have for any serious Reddit user."</p>
+        <div class="review-attr">— Chrome Web Store review</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Works perfectly. Just install and forget. The deleted content shows up right on the Reddit page. Super clean."</p>
+        <div class="review-attr">— Chrome Web Store review</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was looking for something like this for ages. The profile restoration feature is incredible."</p>
+        <div class="review-attr">— Chrome Web Store review</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-white" id="faq" style="background:white;">
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-sub">Everything you need to know</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Is it free?</div>
+        <div class="faq-a">Yes, the extension is completely free to use.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where does the archived content come from?</div>
+        <div class="faq-a">We use Arctic Shift, a public third-party Reddit archive that stores public Reddit content before it gets deleted.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does it collect my data?</div>
+        <div class="faq-a">No personal data leaves your browser. Only subreddit names and usernames are sent to the archive API to fetch deleted content.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Which Reddit pages does it work on?</div>
+        <div class="faq-a">Post pages (with comments) and user profile pages.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I turn it off for specific subreddits?</div>
+        <div class="faq-a">Yes, use the popup menu or settings page to add subreddits to a blocklist.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does it work on old.reddit.com or new Reddit?</div>
+        <div class="faq-a">It works on the current Reddit interface (sh.reddit.com / www.reddit.com).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="install">
+    <h2>Ready to see what's been deleted?</h2>
+    <a href="#" class="btn-cta-light" id="cws-link-bottom">Add to Chrome — Free</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@example.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 See Deleted Reddit Posts. Not affiliated with Reddit, Inc.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

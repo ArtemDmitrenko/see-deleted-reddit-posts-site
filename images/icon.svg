@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Teal rounded-square bg -->
+  <rect width="128" height="128" rx="26" fill="#FF4500"/>
+
+  <!-- Subtle glass fill -->
+  <circle cx="53" cy="51" r="25" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- Reddit upvote ▲ inside glass — orange, fits within inner radius -->
+  <polygon points="53,36 66,62 40,62" fill="#ff4500"/>
+
+  <!-- Glass ring on top (clean border) -->
+  <circle cx="53" cy="51" r="25" fill="none" stroke="white" stroke-width="9"/>
+
+  <!-- Handle -->
+  <line x1="71" y1="69" x2="96" y2="94" stroke="white" stroke-width="9" stroke-linecap="round"/>
+</svg>
