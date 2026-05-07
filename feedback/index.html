@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Feedback — See Deleted Reddit Posts</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .feedback-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .feedback-main {
+      flex: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      width: 100%;
+    }
+    .feedback-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .feedback-main h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--fg-strong);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .feedback-main .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .rating-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff7ed;
+      border: 1.5px solid #fed7aa;
+      border-radius: 8px;
+      padding: 6px 14px;
+      margin-bottom: 32px;
+    }
+    .rating-display .stars {
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .rating-display .rating-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #92400e;
+    }
+    .form-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 22px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--fg-strong);
+      margin-bottom: 8px;
+    }
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .issue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .issue-grid { grid-template-columns: 1fr; }
+    }
+    .issue-option {
+      position: relative;
+    }
+    .issue-option input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .issue-option label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg);
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .issue-option label .emoji {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .issue-option input[type="checkbox"]:checked + label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--fg-strong);
+    }
+    .issue-option label:hover {
+      border-color: #d1d5db;
+      background: var(--bg);
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--fg);
+      background: white;
+      resize: vertical;
+      transition: border-color 0.15s;
+      line-height: 1.5;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    textarea::placeholder { color: var(--muted); }
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--fg);
+      background: white;
+      transition: border-color 0.15s;
+    }
+    input[type="email"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    input[type="email"]::placeholder { color: var(--muted); }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: var(--accent-dark); }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .success-state .success-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+    .success-state h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--fg-strong);
+      margin-bottom: 10px;
+    }
+    .success-state p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .success-state .back-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.15s;
+    }
+    .success-state .back-btn:hover { background: var(--accent-dark); }
+  </style>
+</head>
+<body class="feedback-page">
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-brand">
+        <span class="nav-logo">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="white" stroke-width="2.2" fill="none"/>
+            <polygon points="9,5.5 12,11.5 6,11.5" fill="#FF4500"/>
+            <line x1="14.5" y1="14.5" x2="19.5" y2="19.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        See Deleted Reddit Posts
+      </a>
+    </div>
+  </nav>
+
+  <main class="feedback-main">
+    <div class="feedback-eyebrow">Help us improve</div>
+    <h1>What could be better?</h1>
+    <p class="subtitle">You rated the extension <strong id="stars-label">1–3 stars</strong>. Tell us what went wrong — we read every message.</p>
+
+    <!-- Rating badge (filled in by JS) -->
+    <div class="rating-display" id="rating-display" style="display:none">
+      <span class="stars" id="stars-emoji"></span>
+      <span class="rating-label" id="stars-text"></span>
+    </div>
+
+    <div class="form-card">
+      <!-- Form -->
+      <form id="feedback-form">
+        <div class="form-group">
+          <label>What's the issue? <span class="optional">(pick all that apply)</span></label>
+          <div class="issue-grid">
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i1" value="content_not_restored">
+              <label for="i1"><span class="emoji">🔧</span> Content not restored</label>
+            </div>
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i2" value="missing_comments">
+              <label for="i2"><span class="emoji">💬</span> Missing comments</label>
+            </div>
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i3" value="ui_broken">
+              <label for="i3"><span class="emoji">🖥️</span> UI looks broken</label>
+            </div>
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i4" value="too_slow">
+              <label for="i4"><span class="emoji">🐌</span> Too slow</label>
+            </div>
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i5" value="missing_feature">
+              <label for="i5"><span class="emoji">✨</span> Missing feature</label>
+            </div>
+            <div class="issue-option">
+              <input type="checkbox" name="issue" id="i6" value="other">
+              <label for="i6"><span class="emoji">💬</span> Other</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Tell us more <span class="optional">(optional)</span></label>
+          <textarea id="comment" name="comment" placeholder="Describe what happened or what you'd like to see…"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="optional">(optional — only if you want a reply)</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Send Feedback</button>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-state">
+        <div class="success-icon">🙏</div>
+        <h2>Thank you for the feedback!</h2>
+        <p>We'll do our best to fix the issues you mentioned. If you left an email we may follow up.</p>
+        <a href="https://www.reddit.com" class="back-btn">Back to Reddit</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms of Service</a>
+      <a href="mailto:support@example.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 See Deleted Reddit Posts. Not affiliated with Reddit, Inc.</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const SUPABASE_URL = "https://jjcecqewbzsrinvnftol.supabase.co";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+    const FEEDBACK_SOURCE = "in_app_rating";
+
+    // Read ?rating=N from URL (extension passes it)
+    const params = new URLSearchParams(location.search);
+    const rating = parseInt(params.get("rating") || "0", 10);
+
+    if (rating >= 1 && rating <= 5) {
+      const starsEl = document.getElementById("stars-emoji");
+      const textEl = document.getElementById("stars-text");
+      const ratingDisplay = document.getElementById("rating-display");
+      starsEl.textContent = "★".repeat(rating) + "☆".repeat(5 - rating);
+      textEl.textContent = `${rating} star${rating > 1 ? "s" : ""}`;
+      ratingDisplay.style.display = "inline-flex";
+
+      const label = document.getElementById("stars-label");
+      label.textContent = `${rating} star${rating > 1 ? "s" : ""}`;
+    }
+
+    const form = document.getElementById("feedback-form");
+    const successState = document.getElementById("success-state");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const issues = Array.from(form.querySelectorAll('input[name="issue"]:checked'))
+        .map(el => el.value);
+      const comment = form.querySelector("#comment").value.trim() || null;
+      const email = form.querySelector("#email").value.trim() || null;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      try {
+        const resp = await fetch(`${SUPABASE_URL}/rest/v1/feedback`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({
+            source: FEEDBACK_SOURCE,
+            rating: rating || null,
+            reason: issues.length > 0 ? issues.join(", ") : null,
+            comment,
+            email
+          })
+        });
+
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+        form.style.display = "none";
+        successState.style.display = "block";
+      } catch (err) {
+        console.error("Feedback submit error:", err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Feedback";
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
