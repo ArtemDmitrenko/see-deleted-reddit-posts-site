@@ -161,6 +161,16 @@
       cursor: not-allowed;
       transform: none;
     }
+    .field-error {
+      font-size: 13px;
+      color: #dc2626;
+      margin-top: 8px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+    .reason-grid.invalid .reason-option label {
+      border-color: #fca5a5;
+    }
     .success-state {
       display: none;
       text-align: center;
@@ -245,8 +255,8 @@
       <!-- Form -->
       <form id="feedback-form">
         <div class="form-group">
-          <label>Why did you remove the extension?</label>
-          <div class="reason-grid">
+          <label>Why did you remove the extension? <span style="color:var(--accent)">*</span></label>
+          <div class="reason-grid" id="reason-grid">
             <div class="reason-option">
               <input type="radio" name="reason" id="r1" value="not_working">
               <label for="r1"><span class="emoji">🔧</span> It wasn't working</label>
@@ -272,6 +282,7 @@
               <label for="r6"><span class="emoji">💬</span> Other</label>
             </div>
           </div>
+          <div class="field-error" id="reason-error">Please select a reason.</div>
         </div>
 
         <div class="form-group">
@@ -324,9 +335,28 @@
     const successState = document.getElementById("success-state");
     const submitBtn = document.getElementById("submit-btn");
 
+    const reasonGrid = document.getElementById("reason-grid");
+    const reasonError = document.getElementById("reason-error");
+
+    reasonGrid.addEventListener("change", () => {
+      reasonGrid.classList.remove("invalid");
+      reasonError.classList.remove("visible");
+    });
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const reason = form.querySelector('input[name="reason"]:checked')?.value || null;
+
+      // Validate reason required
+      if (!reason) {
+        reasonGrid.classList.add("invalid");
+        reasonError.classList.add("visible");
+        reasonGrid.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      reasonGrid.classList.remove("invalid");
+      reasonError.classList.remove("visible");
+
       const comment = form.querySelector("#comment").value.trim() || null;
       const email = form.querySelector("#email").value.trim() || null;
 
