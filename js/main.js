@@ -1,5 +1,4 @@
-// Placeholder Chrome Web Store URL — replace after extension is published
-const CWS_URL = 'https://chromewebstore.google.com/';
+const CWS_URL = 'https://chromewebstore.google.com/detail/see-deleted-reddit-posts/bhekdnoeenjjgkifhamofpbdcmidjgff';
 
 document.querySelectorAll('#cws-link-top, #cws-link-hero, #cws-link-bottom').forEach((el) => {
   el.setAttribute('href', CWS_URL);
